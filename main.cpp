@@ -59,9 +59,9 @@ class my_unique_ptr{
 
 int main() {
   my_unique_ptr<int> muptr(new int(10));
-  //my_unique_ptr<int> muptr2(muptr);   //WILL NOT COMPLY, CTOR REMOVED
+  //my_unique_ptr<int> muptr2(muptr);   //WILL NOT COMPILE, CTOR REMOVED
   my_unique_ptr<int> muptr2(std::move(muptr));     //DTOR CALLED ON muptr
-  //my_unique_ptr<int> muptr3 = muptr;  //WILL NOT COMPLY
+  //my_unique_ptr<int> muptr3 = muptr;  //WILL NOT COMPILE
   my_unique_ptr<int> muptr3 = std::move(muptr2);   //DTOR CALLED ON muptr2
   std::cout << *muptr3 << std::endl;
   int* rawptr = muptr3.release();                  //DTOR CALLED ON muptr3
